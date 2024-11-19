@@ -1,0 +1,30 @@
+{
+  "name": "reactpractice2",
+  "version": "1.0.0",
+  "description": "React JS Series by Akshay Saini",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://github.com/sivaneredupalli/Zomato_App_Clone.git"
+  },
+  "keywords": [],
+  "author": "Siva Neredupalli",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ]
+}

@@ -9,9 +9,13 @@ const About = ()=>{
          <User name="Siva Neredupalli(Functional)"/>
          </div>
          <div className="aboutus">
-         <UserClass name="Siva Neredupalli(Class)"/>
+         <UserClass name="First Child(Class)"/>
+         </div>
+         <div className="aboutus">
+         <UserClass name="Second Child(Class)"/>
          </div>
          </>   
     )
 }
 export default About;
+

@@ -1,4 +1,4 @@
-import React, { lazy,Suspense } from "react";
+import React, { lazy,Suspense, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Header";
 import Body from "./Body";
@@ -10,16 +10,34 @@ import Cart from "./Cart";
 import RestaurantsMenu from "./RestaurantsMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import RestaurantsMenu from "./RestaurantsMenu";
-// import Grocery from "./Grocery";
-//chunking
-//lazy loading
+import UserContext from "../../utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "../../utils/appStore";
+
 const Grocery = lazy(() => import("./Grocery"));
   const App = () =>{
+    //Authentication Validation
+const [userName,setUserName]=useState()
+//Make an API call and send user name and password
+ useEffect(()=>{
+  const data = {
+    name :"@Surya Siva"
+  }
+  setUserName(data.name)
+ },[])
+  
     return(
-        <div className="app">
+      <Provider store={appStore}>
+      <UserContext.Provider value={{loggedInUser : userName,setUserName}}>
+      
+        <div>
+          
         <Header/>
         <Outlet />
+        
         </div>
+        </UserContext.Provider>
+        </Provider>
     );
 };
 

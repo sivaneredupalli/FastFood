@@ -5,13 +5,13 @@ const RestaurantCard = (props) =>{
     const {slaString} = resData?.info?.sla;
    
     return(
-        <div className="mx-2 my-2 p-4 w-[250px] h-[460px] bg-gray-100 hover:bg-gray-200 rounded-lg">
+        <div className="mx-2 my-2 p-4 w-[250px] h-[460px] bg-white hover:bg-gray-200 rounded-lg">
     <div>
         <img className="rounded-lg h-[180px] w-[237px]" src={CDN_URL + cloudinaryImageId } alt="image" /> 
     </div>
     <div className="restaurant-details">
         <div className="">
-             <div className="font-bold py-4 text-lg"><b>{name}</b></div>
+             <div className=" py-4 text-lg"><b>{name}</b></div>
              <div className="">{avgRatingString} &#x2605;</div>
         </div>
             <p>{cuisines.join(", ")}</p>

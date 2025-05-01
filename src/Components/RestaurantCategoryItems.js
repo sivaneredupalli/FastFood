@@ -7,15 +7,28 @@ const RestaurantCategoryItems = ({data,showItemIndex,setShowItemIndex})=>{
         setShowItemIndex(showItemIndex)
     }
     return(
-        //Accordion header
-        <div className="w-6/12 bg-gray-100 p-4 mx-auto my-4 rounded-lg">
-        <div className="flex justify-between cursor-pointer" onClick={handleItems}>
-        <span className="font-bold text-lg">{data?.title} ({data?.itemCards?.length})</span>
-        <span>{showItemIndex ? "🔽" : "🔼"}</span>
-        {/* //Accordion body */}
+        <div className="w-full max-w-2xl bg-white border border-gray-200 p-5 mx-auto my-6 rounded-lg shadow-sm">
+        {/* Accordion Header */}
+        <div
+          className="flex justify-between items-center cursor-pointer"
+          onClick={handleItems}
+        >
+          <span className="font-semibold text-gray-800 text-lg">
+            {data?.title} ({data?.itemCards?.length})
+          </span>
+          <span className="text-xl">
+            {showItemIndex ? "🔽" : "🔼"}
+          </span>
         </div>
-        {showItemIndex && <ItemsList Items={data?.itemCards}/>}
-        </div> 
+      
+        {/* Accordion Body */}
+        {showItemIndex && (
+          <div className="mt-4">
+            <ItemsList Items={data?.itemCards} />
+          </div>
+        )}
+      </div>
+      
     );
 };
 export default RestaurantCategoryItems;

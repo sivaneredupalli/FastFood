@@ -29,33 +29,59 @@ const Body = ()=>{
      const onlineStatus = useOnlineStatus();
      if(onlineStatus === false) return <h1> Looks like your internet connection is in offline!! please check before you try...</h1>
     return (listOfRestaurants?.length === 0) ? <Shimmer /> : (
-        <div className="body">
-            <div className="search m-3 p-4 ml-4 flex">
-                <input type="text" className="border border-solid border-black rounded-sm" value={searchFilter} onChange={(e)=>{
-                    return setSearchFilter(e.target.value);}}></input>
-                <button className="px-4 py-1 bg-blue-100 rounded-sm font-bold" onClick={()=>{
-                    console.log(searchFilter);
-                    let searchFilteredList = listOfRestaurants.filter((res)=>{
-                       return res?.info?.name.toLowerCase().includes(searchFilter.toLowerCase());
-                    })
-                    setFilteredRestaurant(searchFilteredList); 
-                }}>Search</button>
-                <div className="px-4 py-1 bg-blue-100 rounded-sm ml-4">
-                <button className="font-bold text-center"onClick={()=>{
-                   const filteredResList = listOfRestaurants.filter((resCard) => resCard?.info?.avgRating > 4.5);
-                   setFilteredRestaurant(filteredResList);  // Assign filtered data back to resList
-                   console.log(filteredResList);
-                    }
-                } >Top Rated Restaurants</button>
-                </div>
-                <div >
-                <label className="font-bold px-2 py-2 bg-blue-100 rounded-sm ml-4">User Name : </label>
-                <input type="text" className="border px-4 py-1 border-solid border-black rounded-sm" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)} />
-                </div>
-                
+        <div className="body ">
+       <div className="search m-3 p-4 ml-4 flex flex-wrap items-center gap-4 bg-white rounded-lg shadow-sm">
+  {/* Search Input */}
+  <input
+    type="text"
+    placeholder="Search restaurants..."
+    className="border border-gray-300 rounded-md px-3 py-2 bg-gray-50 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+    value={searchFilter}
+    onChange={(e) => setSearchFilter(e.target.value)}
+  />
 
-                
-            </div>
+  {/* Search Button */}
+  <button
+    className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md shadow-sm transition-all"
+    onClick={() => {
+      const searchFilteredList = listOfRestaurants.filter((res) =>
+        res?.info?.name.toLowerCase().includes(searchFilter.toLowerCase())
+      );
+      setFilteredRestaurant(searchFilteredList);
+    }}
+  >
+    Search
+  </button>
+
+  {/* Top Rated Button */}
+  <button
+    className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium rounded-md shadow-sm transition-all"
+    onClick={() => {
+      const filteredResList = listOfRestaurants.filter(
+        (resCard) => resCard?.info?.avgRating > 4.5
+      );
+      setFilteredRestaurant(filteredResList);
+    }}
+  >
+    Top Rated Restaurants
+  </button>
+
+  {/* Username Input */}
+  <div className="flex items-center gap-2 ml-auto">
+    <label htmlFor="username" className="text-gray-800 font-medium">
+      User Name:
+    </label>
+    <input
+      id="username"
+      type="text"
+      className="border border-gray-300 rounded-md px-3 py-2 bg-gray-50 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      value={loggedInUser}
+      onChange={(e) => setUserName(e.target.value)}
+      placeholder="Enter name"
+    />
+  </div>
+</div>
+
         <div className="flex flex-wrap max-w-[1400px] mx-auto justify-center ">
         { 
            filteredRestaurant.map( (restaurant) =>(<Link key = 

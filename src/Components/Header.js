@@ -20,7 +20,7 @@ const Header =()=>{
 
   {/* Navigation + User Info */}
   <div className="flex items-center text-white">
-    <ul className="flex items-center space-x-6 text-xl font-bold">
+    <ul className="flex items-center space-x-6 text-xl">
       <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
       <li><Link to="/">Home</Link></li>
       <li><Link to="/about">About</Link></li>

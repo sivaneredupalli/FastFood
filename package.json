@@ -2,7 +2,6 @@
   "name": "reactpractice2",
   "version": "1.0.0",
   "description": "React JS Series by Akshay Saini",
-  "main": "index.js",
   "scripts": {
     "test": "jest",
     "watch-test": "jest --watch",
